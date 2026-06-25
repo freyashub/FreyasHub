@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Freya's All-In-One Hub</title>
+    <style>
+        /* Base Reset & Theme Variables */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            /* Rich deep blue background */
+            --bg-dark: #0a1128; 
+            /* Subtle glassmorphism borders and cards */
+            --card-bg: rgba(255, 255, 255, 0.03);
+            --border-color: rgba(255, 255, 255, 0.1);
+            --text-main: #f0f4f8;
+            --text-muted: #8da2bb;
+            /* Your pink-to-gold gradient */
+            --gradient-accent: linear-gradient(135deg, #ff758c 0%, #ff7eb3 30%, #fccb90 100%);
+            --gold-glow: 0 0 25px rgba(252, 203, 144, 0.25);
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow-x: hidden;
+            padding: 2rem;
+        }
+
+        /* Ambient Glowing Background Detail */
+        body::before {
+            content: '';
+            position: absolute;
+            top: -10%;
+            left: -10%;
+            width: 500px;
+            height: 500px;
+            background: var(--gradient-accent);
+            border-radius: 50%;
+            filter: blur(150px);
+            opacity: 0.15;
+            z-index: -1;
+        }
+
+        /* Main Menu Grid Container */
+        .menu-container {
+            width: 100%;
+            max-width: 900px;
+            text-align: center;
+            z-index: 1;
+        }
+
+        /* Header Styling */
+        header {
+            margin-bottom: 3.5rem;
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        /* Gradient effect on your name and the hub title */
+        h1 span {
+            background: var(--gradient-accent);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .subtitle {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            letter-spacing: 0.5px;
+        }
+
+        /* Responsive Grid Layout */
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        /* Interactive Menu Cards */
+        .menu-item {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 2.5rem 2rem;
+            text-decoration: none;
+            color: var(--text-main);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Hidden gradient border that fades in on hover */
+        .menu-item::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 20px;
+            padding: 1.5px;
+            background: var(--gradient-accent);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        /* Hover Animations */
+        .menu-item:hover {
+            transform: translateY(-8px);
+            background: rgba(255, 255, 255, 0.07);
+            box-shadow: var(--gold-glow);
+        }
+
+        .menu-item:hover::before {
+            opacity: 1;
+        }
+
+        /* Icon Container Details */
+        .icon-wrapper {
+            width: 55px;
+            height: 55px;
+            border-radius: 14px;
+            background: rgba(255, 255, 255, 0.05);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* Icon transforms into the full gradient on hover */
+        .menu-item:hover .icon-wrapper {
+            transform: scale(1.1) rotate(5deg);
+            background: var(--gradient-accent);
+            box-shadow: 0 4px 15px rgba(255, 117, 140, 0.3);
+        }
+
+        /* Typography Inside Cards */
+        .menu-item h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.6rem;
+            font-weight: 600;
+            letter-spacing: -0.2px;
+        }
+
+        .menu-item p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="menu-container">
+        <header>
+            <h1><span>Freya's</span> All-In-One Hub</h1>
+            <p class="subtitle">Welcome to your personal digital dashboard</p>
+        </header>
+
+        <main class="menu-grid">
+            <!-- Card 1 -->
+            <a href="#" class="menu-item">
+                <div class="icon-wrapper">📝</div>
+                <h3>Project Space</h3>
+                <p>Manage your daily tasks, logs, and creative ideas.</p>
+            </a>
+
+            <!-- Card 2 -->
+            <a href="#" class="menu-item">
+                <div class="icon-wrapper">🔮</div>
+                <h3>Media Center</h3>
+                <p>Curate your favorite music, art, and inspirations.</p>
+            </a>
+
+            <!-- Card 3 -->
+            <a href="#" class="menu-item">
+                <div class="icon-wrapper">⚙️</div>
+                <h3>Tools</h3>
+                <p>Quick utilities and web apps built for your workflow.</p>
+            </a>
+        </main>
+    </div>
+
+</body>
+</html>
